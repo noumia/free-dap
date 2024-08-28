@@ -8,6 +8,31 @@
 #include "hal_gpio.h"
 
 /*- Definitions -------------------------------------------------------------*/
+#ifdef XIAO_PINOUT
+/* XIAO
+
+A0 26 | 5V
+A1 27 | GND
+A2 28 | 3V3
+A3 29 | 3 SWCLK
+D4  6 | 4 SWDIO
+D5  7 | 2 nRESET
+TX  0 | 1 RX
+
+*/
+HAL_GPIO_PIN(SWCLK_TCK,      0,  3, sio_3 )
+HAL_GPIO_PIN(SWDIO_TMS,      0,  4, sio_4 )
+HAL_GPIO_PIN(TDI,            0, 28, sio_28)
+HAL_GPIO_PIN(TDO,            0, 29, sio_29)
+HAL_GPIO_PIN(nRESET,         0,  2, sio_2 )
+
+HAL_GPIO_PIN(VCP_STATUS,     0, 17, sio_17)
+HAL_GPIO_PIN(DAP_STATUS,     0, 25, sio_25)
+
+HAL_GPIO_PIN(UART_TX,        0, 0, uart0_tx)
+HAL_GPIO_PIN(UART_RX,        0, 1, uart0_rx)
+
+#else
 HAL_GPIO_PIN(SWCLK_TCK,      0, 11, sio_11)
 HAL_GPIO_PIN(SWDIO_TMS,      0, 12, sio_12)
 HAL_GPIO_PIN(TDI,            0, 13, sio_13)
@@ -19,6 +44,8 @@ HAL_GPIO_PIN(DAP_STATUS,     0, 25, sio_25);
 
 HAL_GPIO_PIN(UART_TX,        0, 0, uart0_tx)
 HAL_GPIO_PIN(UART_RX,        0, 1, uart0_rx)
+
+#endif
 
 #define UART_PER             UART0
 #define UART_RESET_MASK      RESETS_RESET_uart0_Msk

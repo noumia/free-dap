@@ -53,6 +53,10 @@ DEFINES += \
 
 CFLAGS += $(INCLUDES) $(DEFINES)
 
+ifeq ($(XIAO),1)
+CFLAGS += -DXIAO_PINOUT=1
+endif
+
 OBJS = $(addprefix $(BUILD)/, $(notdir %/$(subst .c,.o, $(SRCS))))
 
 all: directory $(BUILD)/$(BIN).elf $(BUILD)/$(BIN).hex $(BUILD)/$(BIN).bin size
