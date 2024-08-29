@@ -32,6 +32,36 @@ HAL_GPIO_PIN(DAP_STATUS,     0, 25, sio_25)
 HAL_GPIO_PIN(UART_TX,        0, 0, uart0_tx)
 HAL_GPIO_PIN(UART_RX,        0, 1, uart0_rx)
 
+#elif defined(ZERO_PINOUT)
+/* ZERO
+
+5V
+GND
+3V3
+29 : SWCLK
+28 : SWIO
+27 : nRESET
+26
+15
+14
+
+0 : TX
+1 : RX
+2
+
+*/
+HAL_GPIO_PIN(SWCLK_TCK,      0, 29, sio_29)
+HAL_GPIO_PIN(SWDIO_TMS,      0, 28, sio_28)
+HAL_GPIO_PIN(TDI,            0, 15, sio_15)
+HAL_GPIO_PIN(TDO,            0, 14, sio_14)
+HAL_GPIO_PIN(nRESET,         0, 27, sio_27)
+
+HAL_GPIO_PIN(VCP_STATUS,     0,  2, sio_2 )
+HAL_GPIO_PIN(DAP_STATUS,     0, 26, sio_26)
+
+HAL_GPIO_PIN(UART_TX,        0, 0, uart0_tx)
+HAL_GPIO_PIN(UART_RX,        0, 1, uart0_rx)
+
 #else
 HAL_GPIO_PIN(SWCLK_TCK,      0, 11, sio_11)
 HAL_GPIO_PIN(SWDIO_TMS,      0, 12, sio_12)

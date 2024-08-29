@@ -1,8 +1,14 @@
 set -euxo pipefail
 
 cd platform/rp2040/make
-rm -rf build
+rm -rf build_xiao
 mingw32-make XIAO=1
+cp build/*.uf2 ../../../
+cd ../../..
+
+cd platform/rp2040/make
+rm -rf build_zero
+mingw32-make ZERO=1
 cp build/*.uf2 ../../../
 cd ../../..
 

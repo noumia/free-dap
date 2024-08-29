@@ -1,6 +1,17 @@
 ##############################################################################
+
+ifeq ($(XIAO),1)
+BUILD = build_xiao
+BIN = free_dap_xiao_rp2040
+else
+ifeq ($(ZERO),1)
+BUILD = build_zero
+BIN = free_dap_zero_rp2040
+else
 BUILD = build
 BIN = free_dap_rp2040
+endif
+endif
 
 ##############################################################################
 .PHONY: all directory clean size release
@@ -26,6 +37,10 @@ CFLAGS += -MD -MP -MT $(BUILD)/$(*F).o -MF $(BUILD)/$(@F).d
 
 ifeq ($(XIAO),1)
 CFLAGS += -DXIAO_PINOUT=1
+endif
+
+ifeq ($(ZERO),1)
+CFLAGS += -DZERO_PINOUT=1
 endif
 
 LDFLAGS += -mcpu=cortex-m0plus -mthumb
