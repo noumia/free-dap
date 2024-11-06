@@ -51,6 +51,10 @@ PA19 TX_LED (VCP_STATUS)
   #define UART_SERCOM_TXPO         0 // PAD[0]
   #define UART_SERCOM_RXPO         1 // PAD[1]
 
+  #if defined(XIAO_NOUART)
+  #undef HAL_CONFIG_ENABLE_VCP
+  #endif
+
 #elif defined(QTPY_PINOUT)
 /* QTPY
 
@@ -88,6 +92,10 @@ TX PA06 | PA07 RX
   #define UART_SERCOM_IRQ_HANDLER  irq_handler_sercom0
   #define UART_SERCOM_TXPO         2 // PAD[2]
   #define UART_SERCOM_RXPO         3 // PAD[3]
+
+  #if defined(QTPY_NOUART)
+  #undef HAL_CONFIG_ENABLE_VCP
+  #endif
 
 #elif defined(HAL_BOARD_CUSTOM)
   // Externally supplied board configuration takes precedence

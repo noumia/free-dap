@@ -75,10 +75,12 @@ CFLAGS += $(INCLUDES) $(DEFINES)
 
 ifeq ($(XIAO),1)
 CFLAGS += -DXIAO_PINOUT=1
+CFLAGS += -DXIAO_NOUART=1
 endif
 
 ifeq ($(QTPY),1)
 CFLAGS += -DQTPY_PINOUT=1
+CFLAGS += -DQTPY_NOUART=1
 endif
 
 OBJS = $(addprefix $(BUILD)/, $(notdir %/$(subst .c,.o, $(SRCS))))
